@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "929473878574",
+    "project_id": "studioapp-92a11",
+    "storage_bucket": "studioapp-92a11.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929473878574:android:2a977dc04dafc8cced5dbf",
+        "android_client_info": {
+          "package_name": "com.paylisher.android.sample"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMUDo5uDBr2crAvIT_wvyfOr1R34JZcUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929473878574:android:225f4427518f242aed5dbf",
+        "android_client_info": {
+          "package_name": "com.paylisher.test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMUDo5uDBr2crAvIT_wvyfOr1R34JZcUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929473878574:android:82ea36cd9d14dfc1ed5dbf",
+        "android_client_info": {
+          "package_name": "com.yusufulusahin.paylisher_flutter_example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMUDo5uDBr2crAvIT_wvyfOr1R34JZcUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

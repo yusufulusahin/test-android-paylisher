@@ -1,0 +1,20 @@
+# Gradle
+.gradle/
+build/
+**/build/
+local.properties
+
+# Android Studio
+.idea/
+*.iml
+.DS_Store
+
+# Keystore
+*.jks
+*.keystore
+
+# Google Services (keep google-services.json in repo for test projects)
+# google-services.json
+
+# Java heap dumps
+*.hprof
