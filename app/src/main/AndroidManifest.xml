@@ -20,5 +20,20 @@
             </intent-filter>
         </activity>
 
+        <!--
+            FAZ 1 — "Banka senaryosu" reprodüksiyonu.
+            Bu service, Paylisher SDK'nın AAR'ında tanımlı olan
+            com.paylisher.android.notification.FcmMessagingService'i
+            Manifest Merger'da override eder (app manifest > library manifest).
+            Sonuç: FCM mesajları SDK'ya değil, BankFcmService'e düşer.
+        -->
+        <service
+            android:name=".BankFcmService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
     </application>
 </manifest>

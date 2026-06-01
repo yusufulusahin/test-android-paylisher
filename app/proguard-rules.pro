@@ -20,7 +20,5 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-# Keep Paylisher SDK
--keep class com.paylisher.** { *; }
--keep interface com.paylisher.** { *; }
--dontwarn com.paylisher.**
+# Paylisher SDK kendi consumer-rules.pro ile kendini korur.
+# Uygulama tarafında ek kural tanımlamaya gerek yoktur.

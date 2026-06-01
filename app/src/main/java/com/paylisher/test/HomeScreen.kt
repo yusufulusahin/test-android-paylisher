@@ -21,6 +21,24 @@ private val EVENT_BUTTONS = listOf(
     Triple("Ödeme Başlatıldı",  "checkout_start", mapOf("amount" to "99.9")),
 )
 
+/**
+ * Banka push'u simülasyon payload'ları.
+ * `source: "Paylisher"` field'ı YOK → BankFcmService bunları kendi handling
+ * yoluna düşürür, banka template'inde notification çizilir.
+ */
+private val BANK_PUSH_BUTTONS = listOf(
+    Pair("Banka: Para Transferi", mapOf(
+        "title" to "Para Transferi Alındı",
+        "body" to "Hesabınıza 1.250,00 TL EFT yapıldı. (Test)",
+        "tx_id" to "TRX-${System.currentTimeMillis()}"
+    )),
+    Pair("Banka: 3D Secure", mapOf(
+        "title" to "3D Secure Onay",
+        "body" to "Cep telefonunuza gelen kodu giriniz. (Test)",
+        "tx_id" to "AUTH-${System.currentTimeMillis()}"
+    )),
+)
+
 @Composable
 fun HomeScreen(userId: String, onLogout: () -> Unit) {
     val context = LocalContext.current
@@ -58,6 +76,41 @@ fun HomeScreen(userId: String, onLogout: () -> Unit) {
                         Paylisher.capture(event, properties = props)
                         logs.add("[${sdf.format(Date())}] $event")
                         Log.d("SDK", "capture($event) props: $props")
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) { Text(label) }
+            }
+
+            // ─── Banka push simulation kartı ─────────────────────────────
+            // "source: Paylisher" YOK → BankFcmService kendi yoluna düşürür,
+            // banka notification template'i çizilir. Forward kodu eklendiğinde
+            // de bu akışın bozulmadığını kanıtlamak için.
+            item {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF3E0))
+                ) {
+                    Column(Modifier.padding(12.dp)) {
+                        Text(
+                            "Banka push'u simülasyonu",
+                            style = MaterialTheme.typography.titleSmall
+                        )
+                        Text(
+                            "Bu butonlar Paylisher SDK forward kodunu bypass edip doğrudan banka notification çizer. " +
+                            "Faz 1 ve Faz 2'de aynı sonucu vermesi beklenir.",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.outline
+                        )
+                    }
+                }
+            }
+
+            items(BANK_PUSH_BUTTONS) { (label, payload) ->
+                OutlinedButton(
+                    onClick = {
+                        BankFcmService.simulateBankPushFromTestApp(context, payload)
+                        logs.add("[${sdf.format(Date())}] BANK push simulated: ${payload["title"]}")
+                        Log.d("BankSim", "Triggered: $payload")
                     },
                     modifier = Modifier.fillMaxWidth()
                 ) { Text(label) }

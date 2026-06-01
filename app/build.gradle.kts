@@ -20,22 +20,19 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.13"
-    }
+    kotlinOptions { jvmTarget = "11" }
+    buildFeatures { compose = true }
+    composeOptions { kotlinCompilerExtensionVersion = "1.5.13" }
 }
 
 dependencies {
@@ -49,9 +46,9 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
-    // Paylisher SDK
-    implementation("com.paylisher:paylisher-sdk-android-lite:1.0.7")
-    implementation("com.paylisher:paylisher-sdk-lite:1.0.7")
+    // Paylisher SDK (mavencentral)
+    implementation("com.paylisher:paylisher-sdk-lite:1.1.3")
+    implementation("com.paylisher:paylisher-sdk-android-lite:1.1.3")
     // App code imports FirebaseMessaging directly, so it must be on compile classpath.
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation("com.google.firebase:firebase-messaging")
