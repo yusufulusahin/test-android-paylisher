@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">PaylisherTest</string>
+
+    <!-- Login -->
+    <string name="login_title">Paylisher Test</string>
+    <string name="login_userid_label">Müşteri No (userId)</string>
+    <string name="login_userid_placeholder">Örn: 12345</string>
+    <string name="login_button">Giriş Yap (identify)</string>
+
+    <!-- Home -->
+    <string name="home_title">Ana Sayfa</string>
+    <string name="event_screen_view">Ekran Görüntülendi</string>
+    <string name="event_product_click">Ürün Tıklandı</string>
+    <string name="event_add_to_cart">Sepete Eklendi</string>
+    <string name="event_checkout_start">Ödeme Başlatıldı</string>
+
+    <!-- Banka push simülasyonu -->
+    <string name="bank_sim_card_title">Banka push\'u simülasyonu</string>
+    <string name="bank_sim_card_desc">Bu butonlar Paylisher SDK forward kodunu bypass edip doğrudan banka notification çizer. Faz 1 ve Faz 2\'de aynı sonucu vermesi beklenir.</string>
+    <string name="bank_transfer_button">Banka: Para Transferi</string>
+    <string name="bank_transfer_title">Para Transferi Alındı</string>
+    <string name="bank_transfer_body">Hesabınıza 1.250,00 TL EFT yapıldı. (Test)</string>
+    <string name="bank_3ds_button">Banka: 3D Secure</string>
+    <string name="bank_3ds_title">3D Secure Onay</string>
+    <string name="bank_3ds_body">Cep telefonunuza gelen kodu giriniz. (Test)</string>
+
+    <string name="home_events_log_header">Gönderilen Eventler:</string>
+    <string name="logout_button">Çıkış Yap (reset)</string>
+
+    <!-- Banka bildirim kanalı -->
+    <string name="bank_channel_name">Banka Bildirimleri</string>
+    <string name="bank_channel_desc">Banka uygulamasının kendi bildirim kanalı (Paylisher değil)</string>
+    <string name="bank_notification_default_title">Banka Bildirimi</string>
+
+    <!-- Dil seçici -->
+    <string name="language_menu">Dil</string>
+    <string name="language_system">Sistem varsayılanı</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_english">English</string>
+</resources>

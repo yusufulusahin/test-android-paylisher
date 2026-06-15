@@ -21,15 +21,16 @@ import androidx.core.app.NotificationManagerCompat
 object BankNotificationManager {
 
     const val CHANNEL_ID = "bank_channel"
-    private const val CHANNEL_NAME = "Banka Bildirimleri"
     private const val TAG = "BankNotif"
 
     fun createChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
-                CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH
+                CHANNEL_ID,
+                context.getString(R.string.bank_channel_name),
+                NotificationManager.IMPORTANCE_HIGH
             ).apply {
-                description = "Banka uygulamasının kendi bildirim kanalı (Paylisher değil)"
+                description = context.getString(R.string.bank_channel_desc)
             }
             val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             nm.createNotificationChannel(channel)
@@ -48,7 +49,7 @@ object BankNotificationManager {
      * Test için sadece basit bir notification çiziyoruz.
      */
     fun showBankNotification(context: Context, data: Map<String, String>) {
-        val title = data["title"] ?: "Banka Bildirimi"
+        val title = data["title"] ?: context.getString(R.string.bank_notification_default_title)
         val body = data["body"] ?: ""
         val txId = data["tx_id"]
 

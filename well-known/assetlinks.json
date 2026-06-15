@@ -1,0 +1,12 @@
+[
+  {
+    "relation": [ "delegate_permission/common.handle_all_urls" ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.paylisher.test",
+      "sha256_cert_fingerprints": [
+        "FB:E8:32:A7:26:E8:E1:1B:2D:9E:D0:2B:69:27:18:A1:7F:63:3E:98:A5:E6:1C:9D:86:54:EE:39:86:2E:95:0C"
+      ]
+    }
+  }
+]

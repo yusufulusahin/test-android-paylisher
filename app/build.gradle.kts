@@ -47,8 +47,8 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
     // Paylisher SDK (mavencentral)
-    implementation("com.paylisher:paylisher-sdk-lite:1.1.3")
-    implementation("com.paylisher:paylisher-sdk-android-lite:1.1.3")
+    implementation("com.paylisher:paylisher-sdk-lite:1.1.4")
+    implementation("com.paylisher:paylisher-sdk-android-lite:1.1.4")
     // App code imports FirebaseMessaging directly, so it must be on compile classpath.
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation("com.google.firebase:firebase-messaging")

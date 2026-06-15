@@ -13,19 +13,19 @@ fun PaylisherTestApp() {
         composable("login") {
             LoginScreen(
                 onLogin = { userId ->
-                    navController.navigate("home/$userId") {
+                    navController.navigate("main/$userId") {
                         popUpTo("login") { inclusive = true }
                     }
                 }
             )
         }
-        composable("home/{userId}") { backStack ->
+        composable("main/{userId}") { backStack ->
             val userId = backStack.arguments?.getString("userId") ?: ""
-            HomeScreen(
+            MainTabScreen(
                 userId = userId,
                 onLogout = {
                     navController.navigate("login") {
-                        popUpTo("home/$userId") { inclusive = true }
+                        popUpTo("main/$userId") { inclusive = true }
                     }
                 }
             )
