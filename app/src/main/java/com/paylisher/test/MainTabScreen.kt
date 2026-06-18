@@ -23,6 +23,7 @@ fun MainTabScreen(userId: String, onLogout: () -> Unit) {
             NavigationBar {
                 tabItem("🏠", "Ana Sayfa", selectedTab == AppTab.HOME) { DeepLinkBus.selectTab(AppTab.HOME) }
                 tabItem("🛍️", "Ürünler", selectedTab == AppTab.PRODUCTS) { DeepLinkBus.selectTab(AppTab.PRODUCTS) }
+                tabItem("🎁", "Kampanyalar", selectedTab == AppTab.CAMPAIGNS) { DeepLinkBus.selectTab(AppTab.CAMPAIGNS) }
                 tabItem("💳", "Cüzdan", selectedTab == AppTab.WALLET) { DeepLinkBus.selectTab(AppTab.WALLET) }
                 tabItem("👤", "Profil", selectedTab == AppTab.PROFILE) { DeepLinkBus.selectTab(AppTab.PROFILE) }
             }
@@ -32,6 +33,7 @@ fun MainTabScreen(userId: String, onLogout: () -> Unit) {
             when (selectedTab) {
                 AppTab.HOME -> HomeTabContent()
                 AppTab.PRODUCTS -> ProductsTab()
+                AppTab.CAMPAIGNS -> CampaignsTab(userId)
                 AppTab.WALLET -> WalletTab()
                 AppTab.PROFILE -> ProfileTab(userId, onLogout)
             }

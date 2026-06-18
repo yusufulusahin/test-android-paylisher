@@ -43,11 +43,13 @@ class PaylisherTestApplication : Application() {
                 autoHandleDeepLinks = true,
                 authRequiredDestinations = listOf("wallet"),
                 customSchemes = listOf("paylishertest"),
-                universalLinkDomains = listOf("link.paylisher.com"),
+                universalLinkDomains = listOf("link.paylisher.com", "link-eu.paylisher.com"),
                 debugLogging = true,
             )
             // Deferred deeplink (ilk kurulum attribution) — test profili (1 saat pencere, debug açık).
             deferredDeepLinkConfig = PaylisherDeferredDeepLinkConfig.forTesting().withEnabled(true)
+            // Bu proje EU backend'ini kullanıyor → deferred endpoint'ini override et (default link.paylisher.com).
+            deferredDeepLinkApiHost = "https://link-eu.paylisher.com/v1/deferred-deeplink"
 
             // Engage API Pull mode: in-app mesajları SDK ile Engage'den çek (mirrors
             // dietapp DietApplication.kt). teamId/projectId/sourceId/sdkKey zorunlu

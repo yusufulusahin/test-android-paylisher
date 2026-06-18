@@ -39,13 +39,21 @@ fun DeepLinkTestScreen(onBack: () -> Unit) {
         "Ürünler" to "$scheme://products",
         "Ürün A detay" to "$scheme://products/a",
         "Ürün A içerik (en iç)" to "$scheme://products/a/content",
+        "Kampanyalar" to "$scheme://campaigns",
+        "Çeyiz Hesabı detay" to "$scheme://campaigns/ceyiz",
         "Cüzdan (auth-gate)" to "$scheme://wallet",
         "Profil" to "$scheme://profile",
-        "Kampanya key" to "$scheme://products?keyName=$campaignKey",
+    )
+    // Bir firmanın Studio'da kurduğu kampanyaya bağlayacağı deeplink'ler — keyName SDK'da
+    // campaignData'ya resolve olur, source/campaign_id attribution'a girer, auth=required gate açar.
+    val firmCampaignUrls = listOf(
+        "Çeyiz — push (key + source)" to "$scheme://campaigns/ceyiz?keyName=$campaignKey&campaign_id=CMP-001&source=push",
+        "Çeyiz — başvuruya (auth-gate)" to "$scheme://campaigns/ceyiz/apply?auth=required&source=email",
+        "Sadece key (resolve → yönlen)" to "$scheme://campaigns?keyName=$campaignKey&source=sms",
     )
     val universalUrls = listOf(
         "Ürün A detay" to "https://$domain/products/a",
-        "Ürün A içerik" to "https://$domain/products/a/content",
+        "Çeyiz Hesabı" to "https://$domain/campaigns/ceyiz",
     )
 
     fun openUrl(url: String) {
@@ -82,6 +90,17 @@ fun DeepLinkTestScreen(onBack: () -> Unit) {
 
             item { Text("Custom Scheme — gerçek ekranlara yönlenir", style = MaterialTheme.typography.titleSmall) }
             items(customUrls) { (label, url) ->
+                UrlRow(label, url, "Aç", { openUrl(url) }) { clipboard.setText(AnnotatedString(url)) }
+            }
+
+            item {
+                Column {
+                    Text("🏢 Firma kampanya deeplink'i", style = MaterialTheme.typography.titleSmall)
+                    Text("Bir firmanın Studio'da kurduğu kampanyaya bağlayacağı link (keyName + source + auth).",
+                        style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline)
+                }
+            }
+            items(firmCampaignUrls) { (label, url) ->
                 UrlRow(label, url, "Aç", { openUrl(url) }) { clipboard.setText(AnnotatedString(url)) }
             }
 
